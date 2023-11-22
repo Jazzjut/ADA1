@@ -1,0 +1,16 @@
+--dans T_Fiche SI on à un NbFS différent de 0  alors ec
+prxJ : constant float:=12.00;--judo prix
+prxT : constant float:=10.00;--tennis prix
+prxN : constant float:=15.00;--natation prix
+prxF : constant float:=10.00;--football prix
+prxD : constant float:=8.00;--danse prix
+prxR : constant float:=12.00;--rugby prix
+comme    
+TYPE T_Sport IS (Judo, Tennis, Natation, Football, Danse, Rugby);
+TYPE T_TabSport IS ARRAY (T_Sport) OF Boolean;
+Si boolean 0=faux il ne participe pas à ce sport si boolean 1=vrai il participe à ce sport
+afficher 1 ou 0 pour calculer
+Si boolean 0 on n'affiche rien dans la casse sport sinon boolean=1 on affiche une croix
+PxH:=prxJ* +prxT* +prxN* +prxF* +prxD* +prxR*
+PxH:=PxH*
+If NbFS ='0' then 
