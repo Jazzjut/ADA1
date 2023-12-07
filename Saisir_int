@@ -1,0 +1,20 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO;
+USE Ada.Text_IO,Ada.Integer_Text_IO;
+
+PROCEDURE Saisie_Int IS
+   -- déclare var pour stocker la saisie 
+   N : Integer;
+   
+   Begin
+   loop 
+   Begin
+      Put("un entier :"); 
+      get(n);skip_line;
+         EXIT;
+      EXCEPTION 
+         WHEN Data_Error => Skip_Line; Put_Line("erreur de saisie, recommencez");
+         -- on tape autre chose qu'un entier 
+         -- pas de constraint_error pour user affiche si il est trop vieux ou trop jeune
+   END;
+END LOOP;
+END Saisie_Int;
