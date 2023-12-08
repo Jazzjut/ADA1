@@ -1,23 +1,21 @@
+WITH Outils;
+Use Outils;
+
 PACKAGE Gestion_Fiche IS
-   TYPE T_Sport IS (Judo,Tennis,Natation,Football,Danse,Rugby);
-   TYPE T_TabSport IS ARRAY (T_Sport) OF Boolean;
-   SUBTYPE T_Mot is String(1..50);
    TYPE T_Fiche IS RECORD
-      Nom : T_Mot;
-      Prenom : T_Mot;
-      Sexe : Boolean;
-      Age : Positive RANGE 4..12;
-      NbFS : Natural;
-      PxH : Float;
+      Nom : T_Mot := (others => ' ');
+      Prenom : T_Mot := (others => ' ');
+      Sexe : Boolean := false; -- false = garçon, true = fille
+      Age : Positive := 4;
+      NbFS : Natural := 0;
+      PxH : Float := 0.0;
       SP : T_TabSport;
+      Vide : boolean := true; -- si vide = true, la case est vide
    END RECORD;
    M : CONSTANT Integer := 5;
-   R : Integer;
+   R : Natural;-- range
     --R := M*T_Sport'RANGE; Ã  mettre dans l'adb
 -- inscription d'un nouvel enfant
-   PROCEDURE Inscription (F : OUT T_Fiche);
-      Nom_Length : Natural;
-   Prenom_Length : Natural;
-   S:T_Sport;
+   PROCEDURE Inscription (F : IN OUT T_Fiche);
 END Gestion_Fiche;
 
