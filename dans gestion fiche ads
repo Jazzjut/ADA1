@@ -1,0 +1,6 @@
+   TYPE T_Groupe IS RECORD
+      CompF:Integer:=0;
+      CompG:Integer:=0;
+   END RECORD;
+   --TYPE T_TabGroupe IS ARRAY (Positive RANGE 4..12, T_Sport'RANGE) OF T_Groupe;
+   PROCEDURE Afficher_Tableau(T: IN T_Groupe);
