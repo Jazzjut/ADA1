@@ -13,7 +13,7 @@ PACKAGE BODY Outils IS
    END Saisie;
 
 PROCEDURE Saisie_Ch (Ch : OUT Natural) IS
-   -- déclare var pour stocker la saisie
+   -- dÃ©clare var pour stocker la saisie
 
    Begin
    loop
@@ -28,25 +28,5 @@ PROCEDURE Saisie_Ch (Ch : OUT Natural) IS
 END LOOP;
 END Saisie_Ch;
 
-PROCEDURE AffichageSP (SP : IN T_TabSport) IS
-BEGIN
-   FOR I IN SP'RANGE LOOP
-      IF SP (I) = True THEN
-         Put(T_Sport'image(I));
-      END IF;
-      new_line;
-   END LOOP;
-END AffichageSP;
-
-FUNCTION Reduc (Nbfs : IN Integer; PxH : IN Float) RETURN Float IS
-BEGIN
-   -- faudrais mettre les float en constante mais je sais pas où les mettre si t'a une idée
-   IF Nbfs = 0 THEN RETURN PxH;
-   ELSIF Nbfs = 1 THEN RETURN PxH*0.9;
-   ELSIF Nbfs = 2 THEN RETURN PxH*0.8;
-   ELSIF Nbfs = 3 THEN RETURN PxH*0.6;
-   ELSE RETURN PxH*0.5;
-   END IF;
-end Reduc;
 END Outils;
 
