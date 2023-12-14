@@ -1,5 +1,5 @@
-WITH Ada.Text_IO, Ada.Integer_Text_IO, gestion_fiche, outils;
-USE Ada.Text_IO, Ada.Integer_Text_IO, gestion_fiche, outils;
+WITH Ada.Text_IO, Ada.Integer_Text_IO, ada.Float_Text_IO, gestion_fiche, outils;
+USE Ada.Text_IO, Ada.Integer_Text_IO, ada.Float_Text_IO,gestion_fiche, outils;
 
 
 PROCEDURE Projetada IS
