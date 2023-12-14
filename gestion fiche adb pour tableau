@@ -1,0 +1,17 @@
+PROCEDURE Afficher_Tableau(T: IN T_Groupe) IS 
+BEGIN 
+   Put("  ");
+   FOR Age IN 4..12 LOOP
+      Put(Age);Put("|");
+   END LOOP;New_Line; 
+   
+   FOR Sport IN T_Sport LOOP
+      Put(T_Sport'Image(Sport));Put("|");
+      FOR Age IN 4..12 LOOP
+         Put(T.CompF);Put(",");Put(T.CompG);Put("|");
+      END LOOP;
+      New_line;
+
+   END LOOP;
+   New_Line;
+END Afficher_Tableau;
