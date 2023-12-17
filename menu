@@ -1,0 +1,7 @@
+ WHEN '1' =>
+                     Sauvegarder_Tab_Fiche(T, "Sauv_Tab.txt");
+                     Sauvegarder_Tab(TG, "Sauv_Tableau.txt");
+
+                  WHEN '2' =>
+                     Restaurer_Tab_Fiche(T, "Sauv_Tab.txt");
+                     Restaurer_Tab(TG, "Sauv_Tableau.txt");new_line;
