@@ -1,0 +1,88 @@
+ PROCEDURE Sauvegarder_Tab_Fiche(T : T_TabFiche; Nom_Fichier : STRING) IS
+      F: File_Type;
+   BEGIN
+      Create(F,Out_File, Nom_Fichier);
+      FOR I IN T'RANGE LOOP
+         -- On note chaque valeur de notre fiche dans une ligne du tableau
+         Put(F,T(I).Nom);
+         New_Line(F);
+         Put(F,T(I).Prenom);
+         New_Line(F);
+         Put(F,Positive'Image(T(I).Age));
+         New_Line(F);
+         Put(F,Boolean'Image(T(I).Sexe));
+         New_Line(F);
+         Put(F,T(I).Nbfs);
+         New_Line(F);
+         Put(F,Float'Image(T(I).PxH));
+         New_Line(F);
+         FOR Sport IN T_Sport LOOP
+            Put(F,Boolean'Image(T(I).Sp(Sport)));
+            New_Line(F);
+         END LOOP;
+         Put(F,Boolean'Image(T(I).Vide));
+         New_Line(F);
+      END LOOP;
+      -- Fermeture du fichier
+      Close(F);
+      Put("Sauvegarde des fiches reussie !");
+   END Sauvegarder_Tab_Fiche;
+   
+   PROCEDURE Sauvegarder_Tab(TG : T_TabGroupe; Nom_Fichier : STRING) IS
+      F: File_Type;
+   BEGIN
+      Create(F,Out_File, Nom_Fichier);
+      FOR Sport IN T_Sport LOOP
+         FOR Age IN 4..12 LOOP
+            Put(F,TG(Age,Sport).CompF);New_Line(F);
+            Put(F,TG(Age,Sport).CompG);New_Line(F);
+         END LOOP;
+      END LOOP;
+
+        -- Fermeture du fichier
+      Close(F);
+      Put("Sauvegarde du tableau reussie !");
+   END Sauvegarder_Tab;
+
+
+   PROCEDURE Restaurer_Tab_Fiche(T : OUT T_TabFiche; Nom_Fichier : STRING) IS
+      F : File_Type;
+
+   BEGIN
+      -- Ouverture du fichier, voir commment gérer si le fichier n'existe pas
+         Open(F, In_File, Name => Nom_Fichier);
+      FOR I IN T'RANGE LOOP
+         -- Pour chaque case du tableau, on recupere la valeur de la ligne et on la met dans la fiche dans le bon ordre
+               T(I).Nom := Get_Line(F);
+               T(I).Prenom := Get_Line(F);
+               T(I).Age := Integer'Value(Get_Line(F));
+               T(I).Sexe := Boolean'Value(Get_Line(F));
+               T(I).Nbfs := Integer'Value(Get_Line(F));
+               T(I).Pxh := Float'Value(Get_Line(F));
+               FOR Sport IN T_Sport LOOP
+                  T(I).Sp(Sport) := Boolean'Value(Get_Line(F));
+               END LOOP;
+               T(I).Vide := Boolean'Value(Get_Line(F));                
+      END LOOP;
+      -- On ferme le fichier
+         Close(F);
+   END Restaurer_Tab_Fiche;
+   
+   PROCEDURE Restaurer_Tab(TG : OUT T_TabGroupe; Nom_Fichier : STRING) IS
+      F : File_Type;
+
+   BEGIN
+      -- Ouverture du fichier, voir commment gérer si le fichier n'existe pas
+         Open(F, In_File, Name => Nom_Fichier);
+         
+         FOR Sport IN T_Sport LOOP
+         FOR Age IN 4..12 LOOP
+            TG(Age,Sport).CompF := Integer'Value(Get_Line(F));
+            TG(Age,Sport).CompG := Integer'Value(Get_line(F));
+         END LOOP;
+         END LOOP;
+
+
+      -- On ferme le fichier
+         Close(F);
+   END Restaurer_Tab;
